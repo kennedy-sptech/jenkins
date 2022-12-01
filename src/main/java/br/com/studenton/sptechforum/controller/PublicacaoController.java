@@ -62,6 +62,7 @@ public class PublicacaoController {
 
     @PostMapping("/publicar")
     public ResponseEntity realizarPublicacao(@RequestBody @Valid PublicacaoPostRequestBody novaPublicacao) {
+        System.out.println("NovaPublicacao"+novaPublicacao);
         publicacaoService.realizarPublicacao(novaPublicacao);
         return ResponseEntity.status(201).build();
     }

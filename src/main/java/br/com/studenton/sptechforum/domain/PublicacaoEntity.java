@@ -1,6 +1,7 @@
 package br.com.studenton.sptechforum.domain;
 
 import br.com.studenton.sptechforum.mapper.PublicacaoPostRequestBody;
+import org.apache.tomcat.jni.Local;
 import org.hibernate.validator.constraints.Range;
 
 import javax.persistence.*;
@@ -9,6 +10,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.PastOrPresent;
 import javax.validation.constraints.Size;
 import java.sql.Timestamp;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
@@ -111,8 +113,14 @@ public class PublicacaoEntity {
         fkCategoria = publicacaoPostRequestBody.getFkCategoria();
         tipoPublicacao = publicacaoPostRequestBody.getTipoPublicacao();
         fkUsuario = publicacaoPostRequestBody.getFkUsuario();
-        dataHora = LocalDateTime.now(ZoneId.of("America/Sao_Paulo"))
+        LocalDateTime fdsklajl = LocalDateTime.now();
+        LocalDateTime flkjsadfdska = LocalDateTime.now(ZoneId.of("America/Sao_Paulo"));
+        String fdsakljfslda = LocalDateTime.now(ZoneId.of("America/Sao_Paulo"))
                 .format(DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm"));
+
+
+        dataHora = LocalDateTime.now(ZoneId.of("America/Sao_Paulo"))
+                .format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:mm"))+".000";
         status = publicacaoPostRequestBody.getStatus();
     }
 
@@ -122,13 +130,14 @@ public class PublicacaoEntity {
 
         try{
 
-            local = LocalDateTime.parse(dataHora.substring(0,19), DateTimeFormatter.ofPattern("yyyy-dd-MM HH:mm:ss"));
+            local = LocalDateTime.parse(dataHora.substring(0,16), DateTimeFormatter.ofPattern("yyyy-dd-MM HH:mm"));
 
         }catch (Exception e){
 
-            local = LocalDateTime.parse(dataHora.substring(0,19), DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
+            local = LocalDateTime.parse(dataHora.substring(0,16), DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
 
         }
+        System.out.println(local);
 
         return local.until(LocalDateTime.now(), ChronoUnit.DAYS);
     }
