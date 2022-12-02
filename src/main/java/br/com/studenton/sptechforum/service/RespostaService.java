@@ -40,7 +40,7 @@ public class RespostaService {
         resposta.setTexto(respostaBody.getTexto());
 
         resposta.setDataHora(LocalDateTime.now(ZoneId.of("America/Sao_Paulo"))
-                .format(DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm")));
+                .format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:mm"))+".000");
 
         resposta.setFkPublicacao(id);
 
