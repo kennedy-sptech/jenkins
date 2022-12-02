@@ -18,7 +18,6 @@ public interface UsuarioRepository extends JpaRepository<UsuarioEntity, Integer>
 
     List<UsuarioEntity> findAllByAutenticadoTrue();
 
-
     UsuarioEntity findUsuarioEntitiesByIdUsuario(Integer id);
 
     UsuarioEntity findUsuarioEntitiesByIdUsuarioAndSenha(Integer id, String senha);

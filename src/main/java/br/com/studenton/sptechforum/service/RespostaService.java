@@ -5,6 +5,7 @@ import br.com.studenton.sptechforum.domain.RespostaEntity;
 import br.com.studenton.sptechforum.mapper.ResponderPublicacaoResquestBody;
 import br.com.studenton.sptechforum.repository.PublicacaoRepository;
 import br.com.studenton.sptechforum.repository.RespostaRepository;
+import br.com.studenton.sptechforum.repository.UsuarioRepository;
 import org.springframework.stereotype.Service;
 
 import java.sql.Timestamp;
@@ -20,10 +21,13 @@ public class RespostaService {
 
     final PublicacaoRepository publicacaoRepository;
     final RespostaRepository respostaRepository;
+    final UsuarioRepository usuarioRepository;
 
-    public RespostaService(PublicacaoRepository publicacaoRepository, RespostaRepository respostaRepository) {
+    public RespostaService(PublicacaoRepository publicacaoRepository, RespostaRepository respostaRepository,
+                           UsuarioRepository usuarioRepository) {
         this.publicacaoRepository = publicacaoRepository;
         this.respostaRepository = respostaRepository;
+        this.usuarioRepository = usuarioRepository;
     }
 
     public List<RespostaEntity> getAllRespostas(){
@@ -46,9 +50,12 @@ public class RespostaService {
 
         resposta.setFkUsuario(respostaBody.getFkUsuario());
 
+        resposta.setUsuarioByFkUsuario(usuarioRepository.findUsuarioEntitiesByIdUsuario(respostaBody.getFkUsuario()));
+
         publicacao.getRespostasByIdPublicacao().add(resposta);
 
         respostaRepository.save(resposta);
+
         return resposta;
 
     }

@@ -22,4 +22,6 @@ public interface RespostaRepository extends JpaRepository<RespostaEntity, Intege
 
     RespostaEntity findRespostaEntitiesByIdRespostaAndTextoLike(int id, String texto);
 
+    RespostaEntity findByIdResposta(int id);
+
 }

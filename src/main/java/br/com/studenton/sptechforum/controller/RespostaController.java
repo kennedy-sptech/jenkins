@@ -39,7 +39,7 @@ public class RespostaController {
             @ApiResponse(responseCode = "409", description = "Essa Publicação já foi respondida")
     })
     @PostMapping
-    public ResponseEntity responderPergunta(@RequestParam Integer idPublicacao,
+    public ResponseEntity<RespostaEntity> responderPergunta(@RequestParam Integer idPublicacao,
                                                             @RequestBody ResponderPublicacaoResquestBody
                                                                     resposta){
 
@@ -51,18 +51,14 @@ public class RespostaController {
 
         if(publicacaoService.findPublicacaoById(idPublicacao).getTipoPublicacao() == 1){
 
-            respostaService.respostaDuvida(resposta, idPublicacao);
-            return ResponseEntity.status(200).build();
+            return ResponseEntity.status(200).body(respostaService.respostaDuvida(resposta, idPublicacao));
 
         }else if(publicacaoService.findPublicacaoById(idPublicacao).getRespostasByIdPublicacao().isEmpty() &&
                 publicacaoService.findPublicacaoById(idPublicacao).getStatus() == 1){
 
             publicacaoService.updateStatusById(idPublicacao, 2);
 
-            respostaService.respostaDuvida(resposta, idPublicacao);
-
-            return ResponseEntity.status(200).build();
-
+            return ResponseEntity.status(200).body(respostaService.respostaDuvida(resposta, idPublicacao));
         }
 
         return ResponseEntity.status(409).build();

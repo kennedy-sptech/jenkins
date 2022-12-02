@@ -85,12 +85,16 @@ public class RespostaEntity {
         return usuarioByFkUsuario.getNome();
     }
 
+    public void setNomeUsuario(){
+        this.nomeUsuario = usuarioByFkUsuario.getNome();
+    }
+
     public String getFotoUsuario() {
         return usuarioByFkUsuario.getFotoPerfil();
     }
 
-    public void setFotoUsuario(String nomeUsuario) {
-        this.nomeUsuario = usuarioByFkUsuario.getFotoPerfil();
+    public void setFotoUsuario() {
+        this.fotoUsuario = usuarioByFkUsuario.getFotoPerfil();
     }
 
     public String getCursoSemestre(){
@@ -170,9 +174,9 @@ public class RespostaEntity {
 //        return usuarioByFkUsuario;
 //    }
 
-//    public void setUsuarioByFkUsuario(UsuarioEntity usuarioByFkUsuario) {
-//        this.usuarioByFkUsuario = usuarioByFkUsuario;
-//    }
+    public void setUsuarioByFkUsuario(UsuarioEntity usuarioByFkUsuario) {
+        this.usuarioByFkUsuario = usuarioByFkUsuario;
+    }
 
 //    public PublicacaoEntity getPublicacaoByFkPublicacao() {
 //        return publicacaoByFkPublicacao;

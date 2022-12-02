@@ -113,11 +113,6 @@ public class PublicacaoEntity {
         fkCategoria = publicacaoPostRequestBody.getFkCategoria();
         tipoPublicacao = publicacaoPostRequestBody.getTipoPublicacao();
         fkUsuario = publicacaoPostRequestBody.getFkUsuario();
-        LocalDateTime fdsklajl = LocalDateTime.now();
-        LocalDateTime flkjsadfdska = LocalDateTime.now(ZoneId.of("America/Sao_Paulo"));
-        String fdsakljfslda = LocalDateTime.now(ZoneId.of("America/Sao_Paulo"))
-                .format(DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm"));
-
 
         dataHora = LocalDateTime.now(ZoneId.of("America/Sao_Paulo"))
                 .format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:mm"))+".000";
@@ -161,8 +156,6 @@ public class PublicacaoEntity {
     public void setFotoUsuario(String nomeUsuario) {
         this.nomeUsuario = usuarioByFkUsuario.getFotoPerfil();
     }
-
-
 
     public String getCategoria(){
         return categoriaByFkCategoria.getCategoria();
