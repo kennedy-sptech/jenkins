@@ -13,6 +13,7 @@ public class SptechforumApplication {
 		SpringApplication.run(SptechforumApplication.class, args);
 	}
 
+	
 	@Bean
 	public WebMvcConfigurer configurer() {
 		return new WebMvcConfigurer() {
