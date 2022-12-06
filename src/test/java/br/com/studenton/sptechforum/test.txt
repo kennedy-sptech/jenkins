@@ -1,0 +1,76 @@
+I) Uso de imagens em telas
+Utilizado o conceito Drawable, que torna possível exibir imagens estáticas no app, uma abstração para tudo que pode ser desenhado.
+Arquivos de imagens são colocados na pasta app/src/main/res/drawable, uma das maneiras de fazer uso desse recurso é colocando direto como background em uma ImageView e a outra maneira é usando o método setImageResource através do recurso binding.
+Implementado nos arquivos: 
+
+
+II) Chamada de outra Activity passando parâmetros para ela
+Existe trocas de Activities de Login para Terms, Terms para as Lpgd1 que inicia as outras activities de LGPD sequencialmente até retornar para de Login, de Login para Main ou EsqueciMinhaSenha. 
+Essas trocas acontecem sem passar argumentos, contudo, na MainActivity ao chamar os Fragments é definido como argumento de cada fragment um bundle que é um objeto chave valor que carrega as informações que salvamos com o recurso getSharedPreferences.
+
+
+III) Persistência e recuperação de dados off-line persistidos no dispositivo
+Conceito aplicado utilizando o recurso SharedPreferences, o qual permite persistir, editar e deletar dados localmente, no formato chave/valor. Normalmente usado para cache de dados.
+Presente nas classe LoginActivity e TermsActivity onde há definição de dados (utilizandos os métodos put) e na classe MainActivity onde há consumo (utilizando os métodos get).
+
+
+IV) Implementação de i18N em arquivos de layout (.xml) e classes (.kt)
+Implementado em app/src/main/res/values/strings.xml e app/src/main/res/values-en-rUS/strings.xml
+Conceito que permite o app ser apresentado em múltiplos idiomas através da definição de arquivos xml contendo as strings que serão usadas. 
+
+
+V) Implementação de "rolagem" de elementos na tela
+app/src/main/java/br/com/studenton/fragments/FeedFragment.kt (linhas 69 e 75)
+Utilizada a rolagem do próprio ReciclerView, em alternativa a isso poderia ser utilizado ScrollView ou HorizontalScrowView
+
+VI) Consumo de uma REST API
+Conceito aplicado utilizado a biblioteca Retrofit para consumir a API desenvolvida no terceiro semestre.
+Configuração do Retrofit realiza em app/src/main/java/br/com/studenton/repository/Rest.kt
+Usado em grande parte na classe FeedFragment.kt.
+A biblioteca permite realizar chamadas HTTP e lidar com assíncronicidade, quando uma requisição é bem sucedida o método onResponse entra em ação, caso contrário onFailure age.
+Presente nas classes: 
+
+VII) Fragments
+Fragments diferente de uma Activity é algo mais leve, com possibilidade de reuso e contém seu próprio ciclo de vida. Uma activity pode conter um ou mais Fragments ao mesmo tempo. 
+
+Foram muito utilizado para evitar instanciar novas activities. 
+
+Presentes em: 
+
+
+Acesse o código fonte da aplicação Android do projeto de seu grupo de PI (NÃO é nenhum dos individuais!) e identifique em qual(is) arquivo(s) foi(ram) implementado(s) esses conceitos. Para isso, cite o(s) nome(s) do(s) arquivo(s) e escreva algo, com suas palavras, sobre como o conceito em questão foi aplicado. Se possível, indique em qual(is) linhas estão implementadas essas funcionalidades.
+
+Caso tenha implementado em mais de 1 lugar, indique em detalhes apenas 1 mas cite os nomes dos arquivos onde também é citado.
+
+NÃO PRECISA fazer uma redação, um "textão". Seja breve e direto, ok?
+
+Exemplo:
+Conceito "Acesso a banco de dados" (fictício, claro).
+Implentado na classe ConexaoLoka.kt. Usamos a biblioteca Spring JDBC e nessa classe, criamos um getJdbcTemplate() que abstrai a conexão com banco e a criação do JdbcTemplate. Linha 29.
+
+Também implementamos esse conceito nas classes Tela2.kt e Tela3.kt.
+
+
+OBS: Notou na parte em que consta "com suas palavras"? Acredito que é bem pouco provável que mais de uma pessoa tenha as mesmas palavras para explicar como implementou um conceito, certo?
+
+
+
+OBS2: E se eu tiver um conceito usando em dezenas de arquivos? Cite que foi usado em muitos arquivos detalhes em apenas 1 e apenascite os nomes dos outros arquivos.
+
+
+
+Para fazer tudo isso, crie um DOC (ou DOCX) e, nele, mande:
+
+- Seu nome completo, RA e turma
+
+- A URL do repositório de seu grupo de PI. Se estiver privado, adicione o professor (jyoshiriro-bandtec) como membro
+
+- As explicações aqui solicitadas
+
+Envie esse DOC/DOCX aqui no moodle.
+
+
+
+"Mas, fessô, meu grupo não implementou o conceito X. O que faço?"
+
+Simples: Diga que o "Conceito X não foi implementado no projeto". Porém, se, ao abrir o projeto, o professor notar que foi sim implementado, haverá desconto na nota.
